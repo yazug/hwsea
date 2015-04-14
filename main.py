@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask.ext.sqlalchemy import SQLAlchemy
 
 import os
@@ -48,6 +48,13 @@ class User(db.Model):
 @app.route('/')
 def hello():
    return render_template('welcome.html', name='Jason')
+
+@app.route('/newuser', methods=['POST'])
+def newUser():
+    if request.method == 'POST':
+        print request.form['firstname']
+        return '<html><body><h1>Thank You</h1></body></html>'
+    return render_template('newuser.html')
 
 @app.route('/admin/list')
 def listUsers():
