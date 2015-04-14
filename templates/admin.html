@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		    <title>Admin Users</title>
+	</head>
+	<body>
+		<h1>Users</h1>
+		<table border="1">
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Address 1</th>
+				<th>Address 2</th>
+				<th>City</th>
+				<th>State</th>
+				<th>Zip Code</th>
+				<th>Country</th>
+				<th>Date</th>
+			</tr>
+		{% for user in user_list %}
+			<tr>
+				<td>{{ user.first_name }}</td>
+				<td>{{ user.last_name }}</td>
+				<td>{{ user.address1 }}</td>
+				<td>{{ user.address2 }}</td>
+				<td>{{ user.city }}</td>
+				<td>{{ user.state }}</td>
+				<td>{{ user.zip_code }}</td>
+				<td>{{ user.country }}</td>
+				<td>{{ user.created_on }}</td>
+			</tr>
+		{% endfor %}
+		</table>
+	</body>
+</html>
