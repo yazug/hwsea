@@ -45,15 +45,25 @@ class User(db.Model):
                            self.country,
                            self.created_on)
 
+def validateData(formData):
+    valid = True
+    for element in formData.keys():
+        if element != 'address2':
+            if formData[element] == '':
+                valid = False
+    return valid
+
 @app.route('/')
 def hello():
    return render_template('welcome.html', name='Jason')
 
-@app.route('/newuser', methods=['POST'])
+@app.route('/newuser', methods=['GET', 'POST'])
 def newUser():
     if request.method == 'POST':
-        print request.form['firstname']
-        return '<html><body><h1>Thank You</h1></body></html>'
+        if validateData(request.form) is True:
+            return '<html><body><h1>Thank You</h1></body></html>'
+        else:
+            return '<html><body><h1>Some Data is not valid!!!</h1></body></html>'
     return render_template('newuser.html')
 
 @app.route('/admin/list')
