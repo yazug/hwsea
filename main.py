@@ -48,8 +48,17 @@ class User(db.Model):
 def validateData(formData):
     valid = True
     for element in formData.keys():
-        if element != 'address2':
+        if element != 'address2' and element != 'zip_code':
             if formData[element] == '':
+                print 'bad ' + element
+                valid = False
+            else:
+                print formData[element]
+        elif element == 'zip_code':
+            length = len(formData[element])
+            print length
+            if length != 5 or length != 9:
+                print 'bad zip'
                 valid = False
     return valid
 
