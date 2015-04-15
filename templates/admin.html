@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 	<h2>User List</h2>
-	<table border="1">
+	<table class="style-table">
 		<tr>
 			<th>First Name</th>
 			<th>Last Name</th>
@@ -14,7 +14,7 @@
 			<th>Date</th>
 		</tr>
 		{% for user in user_list %}
-		<tr>
+		<tr class="{{ loop.cycle('odd', 'even') }}">
 			<td>{{ user.first_name }}</td>
 			<td>{{ user.last_name }}</td>
 			<td>{{ user.address1 }}</td>
