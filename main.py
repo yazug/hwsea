@@ -85,7 +85,7 @@ def newUser():
             db.session.commit()
             return render_template('thankyou.html')
         else:
-            return '<html><body><h1>Some Data is not valid!!!</h1></body></html>'
+            return render_template('validateerror.html')
     return render_template('newuser.html')
 
 
