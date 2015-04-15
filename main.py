@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request
 from flask.ext.sqlalchemy import SQLAlchemy
 
+import datetime
 import os
 
 db_name = '/tmp/test.db'
@@ -32,6 +33,7 @@ class User(db.Model):
         self.state = state
         self.zip_code = zip_code
         self.country = 'US'
+        self.created_on = datetime.datetime.now()
 
     def __repr__(self):
         data = 'first: {0}, last: {1}, address1: {2}, address2: {3}, city: {4}, state: {5}, zip: {6}, country: {7}, Date: {8}'
@@ -65,7 +67,18 @@ def hello():
 @app.route('/newuser', methods=['GET', 'POST'])
 def newUser():
     if request.method == 'POST':
+        print request.form
         if validateData(request.form) is True:
+            newUser = User(request.form['first_name'],
+                 request.form['last_name'],
+                 request.form['address1'],
+                 request.form['address2'],
+                 request.form['city'],
+                 request.form['state'],
+                 request.form['zip_code'])
+            print newUser
+            db.session.add(newUser)
+            db.session.commit()
             return '<html><body><h1>Thank You</h1></body></html>'
         else:
             return '<html><body><h1>Some Data is not valid!!!</h1></body></html>'
