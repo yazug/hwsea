@@ -52,13 +52,9 @@ def validateData(formData):
             if formData[element] == '':
                 print 'bad ' + element
                 valid = False
-            else:
-                print formData[element]
         elif element == 'zip_code':
             length = len(formData[element])
-            print length
-            if length != 5 or length != 9:
-                print 'bad zip'
+            if length != 5 and length != 9:
                 valid = False
     return valid
 
