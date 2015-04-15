@@ -1,43 +1,52 @@
 {% extends "layout.html" %}
 {% block body %}
-	<h2>Please enter your user information</h2>
-	<form action="{{ url_for('newUser') }}" method="POST">
-		<table>
-			<tr>
-				<td>First name:</td>
-				<td><input type="text" name="first_name" value=""></td>
-			</tr>
-			<tr>
-				<td>Last name:</td>
-				<td><input type="text" name="last_name" value=""></td>
-			</tr>
-			<tr>
-				<td>Address 1:</td>
-				<td><input type="text" name="address1" value=""></td>
-			</tr>
-			<tr>
-				<td>Address 2:</td>
-				<td><input type="text" name="address2" value=""></td>
-			</tr>
-			<tr>
-				<td>City:</td>
-				<td><input type="text" name="city" value=""></td>
-			</tr>
-			<tr>
-				<td>State:</td>
-				<td><input type="text" name="state" value=""></td>
-			</tr>
-			<tr>
-				<td>Zip Code:<br></td>
-				<td><input type="text" name="zip_code" value=""></td>
-			</tr>
-			<tr>
-				<td>Country:</td>
-				<td><select name="country">
+	<script>
+		$(document).ready(function(){
+	    		$("#submitBtn").click(function() {
+				$("#newUser").validate();
+			});
+		});
+	</script>
+	<form class="nuForm" id="newUser" action="" method="POST">
+		<fieldset>
+			<legend>Please enter your user information below</legend>
+			<p>
+				<label for="fname">First name</label>
+				<input id="fname" type="text" name="first_name" value="" required>
+			</p>
+			<p>
+				<label for="lname">Last name</label>
+				<input id="lname" type="text" name="last_name" value="" required>
+			</p>
+			<p>
+				<label for="add1">Address 1</label>
+				<input id="add1" type="text" name="address1" value="" required>
+			</p>
+			<p>
+				<label for="add2">Address 2</label>
+				<input id="add2" type="text" name="address2" value="">
+			</p>
+			<p>
+				<label for="city">City</label>
+				<input id="city" type="text" name="city" value="" required>
+			</p>
+			<p>
+				<label for="state">State</label>
+				<input id="state" type="text" name="state" value="" required>
+			</p>
+			<p>
+				<label for="zipcode">Zip Code</label>
+				<input id="zipcode" type="text" name="zip_code" value="" required>
+			</p>
+			<p>
+				<label for="country">Country</label>
+				<select id="country" name="country" required>
 					<option value="US">United States (US)</option>
-				</select></td>
-			</tr>
-			<tr><td><input type="submit" value="Submit"></td></tr>
-		</table>
+				</select>
+			</p>
+			<p>
+				<input id="submitBtn" class="submit" type="submit" value="Submit">
+			</p>
+		</fieldset>
 	</form>
 {% endblock %}
