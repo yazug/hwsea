@@ -1,9 +1,33 @@
 {% extends "layout.html" %}
 {% block body %}
 	<script>
+		$.validator.addMethod("buga", function(value) {
+			var l = value.toString().length
+			return (l == 5 || l == 9);
+		}, "Zip codes must be 5 or 9 digits");
+
 		$(document).ready(function(){
 	    		$("#submitBtn").click(function() {
-				$("#newUser").validate();
+				$("#newUser").validate({
+					rules: {
+						first_name: {
+							required: true
+						},
+						last_name: {
+							required: true
+						},
+						address1: {
+							required: true
+						},
+						city: {
+							required: true
+						},
+						state: {
+							required: true
+						},
+						zip_code: "buga",
+					}
+				});
 			});
 		});
 	</script>
@@ -11,16 +35,16 @@
 		<fieldset>
 			<legend>Please enter your user information below</legend>
 			<p>
-				<label for="fname">First name</label>
-				<input id="fname" type="text" name="first_name" value="" required>
+				<label for="first_name">First name</label>
+				<input id="first_name" type="text" name="first_name" value="">
 			</p>
 			<p>
-				<label for="lname">Last name</label>
-				<input id="lname" type="text" name="last_name" value="" required>
+				<label for="last_name">Last name</label>
+				<input id="last_name" type="text" name="last_name" value="">
 			</p>
 			<p>
-				<label for="add1">Address 1</label>
-				<input id="add1" type="text" name="address1" value="" required>
+				<label for="address1">Address 1</label>
+				<input id="address1" type="text" name="address1" value="">
 			</p>
 			<p>
 				<label for="add2">Address 2</label>
@@ -28,19 +52,19 @@
 			</p>
 			<p>
 				<label for="city">City</label>
-				<input id="city" type="text" name="city" value="" required>
+				<input id="city" type="text" name="city" value="">
 			</p>
 			<p>
 				<label for="state">State</label>
-				<input id="state" type="text" name="state" value="" required>
+				<input id="state" type="text" name="state" value="">
 			</p>
 			<p>
-				<label for="zipcode">Zip Code</label>
-				<input id="zipcode" type="text" name="zip_code" value="" required>
+				<label for="zip_code">Zip Code</label>
+				<input id="zip_code" type="text" name="zip_code" value="">
 			</p>
 			<p>
 				<label for="country">Country</label>
-				<select id="country" name="country" required>
+				<select id="country" name="country">
 					<option value="US">United States (US)</option>
 				</select>
 			</p>
