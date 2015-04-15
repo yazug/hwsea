@@ -10,7 +10,7 @@
 <script type="text/javascript">
   var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 </script>
-<div class=page>
+<div id="outer" class=page>
 	<h1>HelloWorld Assessment</h1>
 	{% block body %}{% endblock %}
 </div>
