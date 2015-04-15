@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 	<script>
-		$.validator.addMethod("buga", function(value) {
+		$.validator.addMethod("zipLength", function(value) {
 			var l = value.toString().length
 			return (l == 5 || l == 9);
 		}, "Zip codes must be 5 or 9 digits");
@@ -26,7 +26,7 @@
 						state: {
 							required: true
 						},
-						zip_code: "buga",
+						zip_code: "zipLength",
 					}
 				});
 			});
@@ -36,40 +36,42 @@
 		<form class="nuForm" id="newUser" action="" method="POST">
 			<fieldset>
 				<legend>Please enter your user information below</legend>
-				<p>
-					<label for="first_name">First Name:</label>
-					<input id="first_name" type="text" name="first_name" value="">
-				</p>
-				<p>
-					<label for="last_name">Last Name:</label>
-					<input id="last_name" type="text" name="last_name" value="">
-				</p>
-				<p>
-					<label for="address1">Address 1:</label>
-					<input id="address1" type="text" name="address1" value="">
-				</p>
-				<p>
-					<label for="add2">Address 2:</label>
-					<input id="add2" type="text" name="address2" value="">
-				</p>
-				<p>
-					<label for="city">City:</label>
-					<input id="city" type="text" name="city" value="">
-				</p>
-				<p>
-					<label for="state">State:</label>
-					<input id="state" type="text" name="state" value="">
-				</p>
-				<p>
-					<label for="zip_code">Zip Code:</label>
-					<input id="zip_code" type="text" name="zip_code" value="">
-				</p>
-				<p>
-					<label for="country">Country:</label>
-					<select id="country" name="country">
+				<table>
+				<tr>
+					<td><label for="first_name">First Name:</label></td>
+					<td><input id="first_name" type="text" name="first_name" value=""></td>
+				</tr>
+				<tr>
+					<td><label for="last_name">Last Name:</label></td>
+					<td><input id="last_name" type="text" name="last_name" value=""></td>
+				</tr>
+				<tr>
+					<td><label for="address1">Address 1:</label></td>
+					<td><input id="address1" type="text" name="address1" value=""></td>
+				</tr>
+				<tr>
+					<td><label for="add2">Address 2:</label></td>
+					<td><input id="add2" type="text" name="address2" value=""></td>
+				</tr>
+				<tr>
+					<td><label for="city">City:</label></td>
+					<td><input id="city" type="text" name="city" value=""></td>
+				</tr>
+				<tr>
+					<td><label for="state">State:</label></td>
+					<td><input id="state" type="text" name="state" value=""></td>
+				</tr>
+				<tr>
+					<td><label for="zip_code">Zip Code:</label></td>
+					<td><input id="zip_code" type="text" name="zip_code" value=""></td>
+				</tr>
+				<tr>
+					<td><label for="country">Country:</label></td>
+					<td><select id="country" name="country">
 						<option value="US">United States (US)</option>
-					</select>
-				</p>
+					</select></td>
+				</tr>
+				</table>
 				<p>
 					<input id="submitBtn" class="submit" type="submit" value="Submit">
 				</p>
