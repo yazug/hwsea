@@ -1,7 +1,13 @@
 <!doctype html>
-<title>Hello from Flask</title>
-{% if name %}
-	<h1>Hello {{ name }}!</h1>
-{% else %}
-	<h1>Hello World!</h1>
-{% endif %}
+{% extends "layout.html" %}
+{% block body %}
+<script>
+	$(document).ready(function(){
+		$("#outer").css("width", $("#inner").width());
+	});
+</script>
+<div id="inner" class="welcome">
+	<a href="{{ url_for('newUser') }}">New User Form</a><br>
+	<a href="{{ url_for('listUsers') }}">Admin User List</a>
+</div>
+{% endblock %}
