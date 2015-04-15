@@ -1,38 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		    <title>New Users</title>
-	</head>
-	<body>
-		<h1>Please enter your user information</h1>
-		<form method="POST">
-			First name:<br>
-			<input type="text" name="firstname" value="">
-			<br>
-			Last name:<br>
-			<input type="text" name="lastname" value="">
-			<br>
-			Address 1:<br>
-			<input type="text" name="address1" value="">
-			<br>
-			Address 2:<br>
-			<input type="text" name="address2" value="">
-			<br>
-			City:<br>
-			<input type="text" name="city" value="">
-			<br>
-			State:<br>
-			<input type="text" name="state" value="">
-			<br>
-			Zip Code:<br>
-			<input type="text" name="zip_code" value="">
-			<br>
-			Country:<br>
-			<select name="country">
-				<option value="US">United States (US)</option>
-			</select>
-			<br><br>
-			<input type="submit" value="Submit">
-		</form>
-	</body>
-</html>
+{% extends "layout.html" %}
+{% block body %}
+	<h2>Please enter your user information</h2>
+	<form action="{{ url_for('newUser') }}" method="POST">
+		<table>
+			<tr>
+				<td>First name:</td>
+				<td><input type="text" name="first_name" value=""></td>
+			</tr>
+			<tr>
+				<td>Last name:</td>
+				<td><input type="text" name="last_name" value=""></td>
+			</tr>
+			<tr>
+				<td>Address 1:</td>
+				<td><input type="text" name="address1" value=""></td>
+			</tr>
+			<tr>
+				<td>Address 2:</td>
+				<td><input type="text" name="address2" value=""></td>
+			</tr>
+			<tr>
+				<td>City:</td>
+				<td><input type="text" name="city" value=""></td>
+			</tr>
+			<tr>
+				<td>State:</td>
+				<td><input type="text" name="state" value=""></td>
+			</tr>
+			<tr>
+				<td>Zip Code:<br></td>
+				<td><input type="text" name="zip_code" value=""></td>
+			</tr>
+			<tr>
+				<td>Country:</td>
+				<td><select name="country">
+					<option value="US">United States (US)</option>
+				</select></td>
+			</tr>
+			<tr><td><input type="submit" value="Submit"></td></tr>
+		</table>
+	</form>
+{% endblock %}
