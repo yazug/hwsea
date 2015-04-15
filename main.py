@@ -89,7 +89,7 @@ def newUser():
     return render_template('newuser.html')
 
 
-@app.route('/admin/list')
+@app.route('/admin')
 def listUsers():
     users = User.query.order_by(User.created_on)
     return render_template('admin.html', user_list=users)
