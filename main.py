@@ -11,6 +11,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_name
 db = SQLAlchemy(app)
 
+
 class User(db.Model):
     __tablename__ = 'tbl_users'
     user_id = db.Column(db.Integer, primary_key=True)
@@ -47,6 +48,7 @@ class User(db.Model):
                            self.country,
                            self.created_on)
 
+
 def validateData(formData):
     valid = True
     for element in formData.keys():
@@ -60,9 +62,11 @@ def validateData(formData):
                 valid = False
     return valid
 
+
 @app.route('/')
 def hello():
-   return render_template('welcome.html', name='Jason')
+    return render_template('welcome.html', name='Jason')
+
 
 @app.route('/newuser', methods=['GET', 'POST'])
 def newUser():
@@ -70,23 +74,23 @@ def newUser():
         print request.form
         if validateData(request.form) is True:
             newUser = User(request.form['first_name'],
-                 request.form['last_name'],
-                 request.form['address1'],
-                 request.form['address2'],
-                 request.form['city'],
-                 request.form['state'],
-                 request.form['zip_code'])
+                           request.form['last_name'],
+                           request.form['address1'],
+                           request.form['address2'],
+                           request.form['city'],
+                           request.form['state'],
+                           request.form['zip_code'])
             print newUser
             db.session.add(newUser)
             db.session.commit()
-            return '<html><body><h1>Thank You</h1></body></html>'
+            return render_template('thankyou.html')
         else:
             return '<html><body><h1>Some Data is not valid!!!</h1></body></html>'
     return render_template('newuser.html')
 
+
 @app.route('/admin/list')
 def listUsers():
-    results = ''
     users = User.query.order_by(User.created_on)
     return render_template('admin.html', user_list=users)
 
