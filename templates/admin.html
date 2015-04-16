@@ -1,30 +1,37 @@
 {% extends "layout.html" %}
 {% block body %}
+	<script>
+		$(document).ready(function() {
+			resizeToTable();
+		});
+	</script>
 	<h2>User List</h2>
-	<table class="style-table">
-		<tr>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Address 1</th>
-			<th>Address 2</th>
-			<th>City</th>
-			<th>State</th>
-			<th>Zip Code</th>
-			<th>Country</th>
-			<th>Date</th>
-		</tr>
-		{% for user in user_list %}
-		<tr class="{{ loop.cycle('odd', 'even') }}">
-			<td>{{ user.first_name }}</td>
-			<td>{{ user.last_name }}</td>
-			<td>{{ user.address1 }}</td>
-			<td>{{ user.address2 }}</td>
-			<td>{{ user.city }}</td>
-			<td>{{ user.state }}</td>
-			<td>{{ user.zip_code }}</td>
-			<td>{{ user.country }}</td>
-			<td>{{ user.created_on }}</td>
-		</tr>
-		{% endfor %}
-	</table>
+	<div id="inner" class="">
+		<table class="style-table">
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Address 1</th>
+				<th>Address 2</th>
+				<th>City</th>
+				<th>State</th>
+				<th>Zip Code</th>
+				<th>Country</th>
+				<th>Date</th>
+			</tr>
+			{% for user in user_list %}
+			<tr class="{{ loop.cycle('odd', 'even') }}">
+				<td>{{ user.first_name }}</td>
+				<td>{{ user.last_name }}</td>
+				<td>{{ user.address1 }}</td>
+				<td>{{ user.address2 }}</td>
+				<td>{{ user.city }}</td>
+				<td>{{ user.state }}</td>
+				<td>{{ user.zip_code }}</td>
+				<td>{{ user.country }}</td>
+				<td>{{ user.created_on }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
 {% endblock %}

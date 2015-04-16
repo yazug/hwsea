@@ -7,7 +7,7 @@
 		}, "Zip codes must be 5 or 9 digits");
 
 		$(document).ready(function(){
-			$("#outer").css("width", $("#inner").width());
+			resizeToInner();
 			$("#submitBtn").click(function() {
 				$("#newUser").validate({
 					rules: {

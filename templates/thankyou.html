@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
-	<h2>Thank You</h2><br>
-	<h2>Your user data has been entered into the database.</h2>
+	<script>
+		$(document).ready(function (){
+			resizeToInner();
+		});
+	</script>
+	<div id="inner" class="new-user">
+		<h2>Thank You</h2><br>
+		<h2>Your user data has been entered into the database.</h2>
+	</div>
 {% endblock %}

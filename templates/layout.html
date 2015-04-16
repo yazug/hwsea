@@ -8,9 +8,16 @@
   url_for('static', filename='jquery.validate.js') }}">
 </script>
 <script type="text/javascript">
-  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+	var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+	function resizeToInner() {
+		$("#outer").css("width", $("#inner").width());
+	}
+
+	function resizeToTable() {
+		$("#outer").css("width", $("div#inner > table").width());
+	}
 </script>
 <div id="outer" class=page>
-	<h1>HelloWorld Assessment</h1>
+	<h1><a href="{{ url_for('welcome') }}">HelloWorld Assessment</a></h1>
 	{% block body %}{% endblock %}
 </div>
