@@ -49,6 +49,10 @@ class User(db.Model):
                            self.created_on)
 
 
+if not os.path.exists(db_name):
+    db.create_all()
+
+
 def validateData(formData):
     valid = True
     for element in formData.keys():
@@ -95,6 +99,4 @@ def listUsers():
     return render_template('admin.html', user_list=users)
 
 if __name__ == "__main__":
-    if not os.path.exists(db_name):
-        db.create_all()
     app.run(host='0.0.0.0')
