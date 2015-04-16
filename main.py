@@ -64,8 +64,8 @@ def validateData(formData):
 
 
 @app.route('/')
-def hello():
-    return render_template('welcome.html', name='Jason')
+def welcome():
+    return render_template('welcome.html')
 
 
 @app.route('/newuser', methods=['GET', 'POST'])
