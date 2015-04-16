@@ -99,4 +99,4 @@ def listUsers():
     return render_template('admin.html', user_list=users)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run()
