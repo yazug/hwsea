@@ -18,6 +18,13 @@
 	}
 </script>
 <div id="outer" class=page>
-	<h1><a href="{{ url_for('welcome') }}">HelloWorld Assessment</a></h1>
+	<h1>HelloWorld Assessment</h1>
+	<br>
+	<ul>
+		<li><a href="{{ url_for('welcome') }}">Home</a></li>
+		<li><a href="{{ url_for('newUser') }}">New User</a></li>
+		<li><a href="{{ url_for('listUsers') }}">User List</a></li>
+	</ul>
+	<br><br>
 	{% block body %}{% endblock %}
 </div>
