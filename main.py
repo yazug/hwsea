@@ -97,5 +97,4 @@ def listUsers():
 if __name__ == "__main__":
     if not os.path.exists(db_name):
         db.create_all()
-    app.debug = True
-    app.run()
+    app.run(host='0.0.0.0')
