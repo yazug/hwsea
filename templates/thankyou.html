@@ -1,8 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
 	<script>
+		function delayedRedirect(){
+			window.location = "{{ url_for('welcome') }}"
+		}
 		$(document).ready(function (){
 			resizeToInner();
+			setTimeout('delayedRedirect()', 5000);
 		});
 	</script>
 	<div id="inner" class="new-user">
