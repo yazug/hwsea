@@ -62,17 +62,35 @@ def validate_data(form_data):
         are present and reasonable
     '''
     valid = True
-    for element in form_data.keys():
-        if element != 'address2' and element != 'zip_code':
-            if form_data[element] == '':
-                if VERBOSE:
-                    print 'bad ' + element
-                valid = False
-        elif element == 'zip_code':
-            length = len(form_data[element])
-            if length != 5 and length != 9:
-                valid = False
-    return valid
+    keys = form_data.keys()
+    keys_to_check = [
+        'first_name',
+        'last_name',
+        'address1',
+        'address2',
+        'city',
+        'state',
+        'zip_code',
+        'country'
+    ]
+
+    # Check for enough of the keys that we care about
+    for col in keys_to_check:
+        if col not in keys:
+            valid = False
+
+    if valid:
+        for element in keys:
+            if element != 'address2' and element != 'zip_code':
+                if form_data[element] == '':
+                    if VERBOSE:
+                        print 'bad ' + element
+                    valid = False
+            elif element == 'zip_code':
+                length = len(form_data[element])
+                if length != 5 and length != 9:
+                    valid = False
+        return valid
 
 
 @app.route('/')
