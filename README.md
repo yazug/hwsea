@@ -49,3 +49,9 @@ Once you are done using the application, the server can be stopped by hitting Ct
 If you are running a virtual environment, make sure to deactivate it.
 
 ``` deactivate ```
+
+
+## Original project
+
+This project has been forked from fuzzball81\hwsea project.
+Extensive rework for better error checking under way
