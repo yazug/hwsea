@@ -13,6 +13,7 @@ db = SQLAlchemy(app)
 
 
 class User(db.Model):
+    ''' SQLAlchemy Record for User table '''
     __tablename__ = 'tbl_users'
     user_id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(80))
@@ -53,15 +54,20 @@ if not os.path.exists(app.config['DB_NAME']):
     db.create_all()
 
 
-def validateData(formData):
+def validate_data(form_data):
+    '''
+        helper function for input verification
+        used to make sure all required fields
+        are present and reasonable
+    '''
     valid = True
-    for element in formData.keys():
+    for element in form_data.keys():
         if element != 'address2' and element != 'zip_code':
-            if formData[element] == '':
+            if form_data[element] == '':
                 print 'bad ' + element
                 valid = False
         elif element == 'zip_code':
-            length = len(formData[element])
+            length = len(form_data[element])
             if length != 5 and length != 9:
                 valid = False
     return valid
@@ -69,14 +75,16 @@ def validateData(formData):
 
 @app.route('/')
 def welcome():
+    ''' Welcome landing page '''
     return render_template('welcome.html')
 
 
 @app.route('/newuser', methods=['GET', 'POST'])
-def newUser():
+def new_user():
+    ''' Form and post endpoint for new user registration '''
     if request.method == 'POST':
         print request.form
-        if validateData(request.form) is True:
+        if validate_data(request.form) is True:
             newUser = User(request.form['first_name'],
                            request.form['last_name'],
                            request.form['address1'],
@@ -94,9 +102,10 @@ def newUser():
 
 
 @app.route('/admin')
-def listUsers():
+def list_users():
+    ''' Admin page to list the users who have registered '''
     users = User.query.order_by(User.created_on)
     return render_template('admin.html', user_list=users)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
