@@ -88,16 +88,17 @@ def new_user():
         if VERBOSE:
             print request.form
         if validate_data(request.form) is True:
-            newUser = User(request.form['first_name'],
-                           request.form['last_name'],
-                           request.form['address1'],
-                           request.form['address2'],
-                           request.form['city'],
-                           request.form['state'],
-                           request.form['zip_code'])
+            new_record = User(
+                request.form['first_name'],
+                request.form['last_name'],
+                request.form['address1'],
+                request.form['address2'],
+                request.form['city'],
+                request.form['state'],
+                request.form['zip_code'])
             if VERBOSE:
-                print newUser
-            db.session.add(newUser)
+                print new_record
+            db.session.add(new_record)
             db.session.commit()
             return render_template('thankyou.html')
         else:
