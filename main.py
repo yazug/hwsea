@@ -6,9 +6,9 @@ from flask.ext.sqlalchemy import SQLAlchemy
 import datetime
 import os
 
-db_name = '/tmp/test.db'
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_name
+app.config['DB_NAME'] = '/tmp/test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + app.config['DB_NAME']
 db = SQLAlchemy(app)
 
 
@@ -49,7 +49,7 @@ class User(db.Model):
                            self.created_on)
 
 
-if not os.path.exists(db_name):
+if not os.path.exists(app.config['DB_NAME']):
     db.create_all()
 
 
