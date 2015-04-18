@@ -11,6 +11,7 @@ app.config['DB_NAME'] = '/tmp/test.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + app.config['DB_NAME']
 db = SQLAlchemy(app)
 
+VERBOSE = True
 
 class User(db.Model):
     ''' SQLAlchemy Record for User table '''
@@ -64,7 +65,8 @@ def validate_data(form_data):
     for element in form_data.keys():
         if element != 'address2' and element != 'zip_code':
             if form_data[element] == '':
-                print 'bad ' + element
+                if VERBOSE:
+                    print 'bad ' + element
                 valid = False
         elif element == 'zip_code':
             length = len(form_data[element])
@@ -83,7 +85,8 @@ def welcome():
 def new_user():
     ''' Form and post endpoint for new user registration '''
     if request.method == 'POST':
-        print request.form
+        if VERBOSE:
+            print request.form
         if validate_data(request.form) is True:
             newUser = User(request.form['first_name'],
                            request.form['last_name'],
@@ -92,7 +95,8 @@ def new_user():
                            request.form['city'],
                            request.form['state'],
                            request.form['zip_code'])
-            print newUser
+            if VERBOSE:
+                print newUser
             db.session.add(newUser)
             db.session.commit()
             return render_template('thankyou.html')
