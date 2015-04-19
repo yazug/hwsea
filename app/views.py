@@ -4,6 +4,8 @@ from app import User
 
 from flask import render_template, request
 
+import re
+
 VERBOSE = True
 
 
@@ -39,8 +41,7 @@ def validate_form_data(form_data):
                         print 'bad ' + element
                     valid = False
             elif element == 'zip_code':
-                length = len(form_data[element])
-                if length != 5 and length != 9:
+                if not re.match('^\d{5}(-\d{4})?$', form_data[element]):
                     valid = False
         return valid
 
