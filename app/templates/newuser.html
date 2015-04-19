@@ -6,7 +6,7 @@
 			return value.match(/\d{5}(-\d{4})/) === value;
 		}, "Zip codes must 99999 or 99999-9999");
 
-		$(document).ready(function(){
+		$(document).ready(function() {
 			resizeToInner();
 			$("#submitBtn").click(function() {
 				$("#newUser").validate({
@@ -26,7 +26,7 @@
 						state: {
 							required: true
 						},
-						zip_code: "zipValid",
+						zip_code: "zipValid"
 					}
 				});
 			});
