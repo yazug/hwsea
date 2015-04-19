@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
 	<script>
-		$.validator.addMethod("zipLength", function(value) {
-			var l = value.toString().length
-			return (l == 5 || l == 9);
-		}, "Zip codes must be 5 or 9 digits");
+		$.validator.addMethod("zipValid", function(value) {
+			var re = /\d{5}(-\d{4})/
+			return value.match(re) == value
+		}, "Zip codes must 99999 or 99999-9999");
 
 		$(document).ready(function(){
 			resizeToInner();
@@ -26,7 +26,7 @@
 						state: {
 							required: true
 						},
-						zip_code: "zipLength",
+						zip_code: "zipValid",
 					}
 				});
 			});
