@@ -25,3 +25,11 @@ demouser
 supervisorctl reread
 supervisorctl update
 supervisorctl start hwsea
+
+
+== post-receive script
+
+	#!/bin/sh
+	cd /home/www/hwsea
+	echo "Deploying to `pwd`"
+	git pull
