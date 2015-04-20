@@ -5,8 +5,13 @@ import os
 
 app = Flask(__name__)
 
-app.config['DB_NAME'] = '/tmp/test.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + app.config['DB_NAME']
+# Attempt to load setting from a config file
+app.config.from_envvar('HWSEA_SETTINGS', silent=True)
+
+if 'SQLALCHEMY_DATABASE_URI' not in app.config or app.config['SQLALCHEMY_DATABASE_URI'] is None or len(app.config['SQLALCHEMY_DATABASE_URI']) == 0:
+    if 'DB_NAME' not in app.config or app.config['DB_NAME'] is None or len(app.config['DB_NAME']) == 0:
+        app.config['DB_NAME'] = '/tmp/test.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + app.config['DB_NAME']
 db = SQLAlchemy(app)
 
 

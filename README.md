@@ -55,3 +55,10 @@ If you are running a virtual environment, make sure to deactivate it.
 
 This project has been forked from fuzzball81\hwsea project.
 Extensive rework for better error checking under way
+
+## Configuring app when launching
+
+There is a test_config file that allows you to easily override where the DB should be written out to
+to launch
+
+	HWSEA_SETTINGS=<absolute path>/test_config python main.py
