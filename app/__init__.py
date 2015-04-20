@@ -20,7 +20,7 @@ class User(db.Model):
     address2 = db.Column(db.String(80))
     city = db.Column(db.String(80))
     state = db.Column(db.String(2))
-    zip_code = db.Column(db.String(9))
+    zip_code = db.Column(db.String(10))  # includes - for 9 digit zip
     country = db.Column(db.String(2))
     created_on = db.Column(db.DateTime())
 
