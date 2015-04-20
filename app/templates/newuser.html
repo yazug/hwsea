@@ -3,7 +3,9 @@
 	<script>
 		$.validator.addMethod("zipValid", function(value) {
 			"use strict";
-			return value.match(/\d{5}(-\d{4})/) === value;
+			var l = value.toString().length
+			var matches = value.match(/\d{5}(-\d{4})?/);
+			return ((l == 5 || l == 10) && (matches != null) && (matches.length >= 1) && (matches[0] === value));
 		}, "Zip codes must 99999 or 99999-9999");
 
 		$(document).ready(function() {
