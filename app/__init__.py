@@ -50,8 +50,10 @@ class User(db.Model):
                            self.created_on)
 
 
-if not os.path.exists(app.config['DB_NAME']):
-    db.create_all()
+@app.before_request
+def init_db():
+    if not os.path.exists(app.config['DB_NAME']):
+        db.create_all()
 
 
 from app import views
