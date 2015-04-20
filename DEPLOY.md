@@ -32,4 +32,4 @@ supervisorctl start hwsea
 	#!/bin/sh
 	cd /home/www/hwsea
 	echo "Deploying to `pwd`"
-	git pull
+	git --work-tree=`pwd` pull
