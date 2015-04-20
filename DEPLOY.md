@@ -14,3 +14,9 @@
 == Reference page
 
 https://realpython.com/blog/python/kickstarting-flask-on-ubuntu-setup-and-deployment/
+
+
+demouser
+/home/demouser/hwsea.git - bare git repo
+/home/www/hwsea - target deployment location
+/home/demouser/hwsea.git/hooks/post-receive - script to checkout files to /home/www/hwsea folder
